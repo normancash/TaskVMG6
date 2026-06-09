@@ -60,7 +60,7 @@ fun TaskListScreen(
                         Text("Título: ${task.title}")
 
                         Text(
-                            if(task.isCompleted)
+                            if(task.completed)
                                 "Completada"
                             else
                                 "Pendiente"

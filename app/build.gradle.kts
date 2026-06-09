@@ -63,4 +63,9 @@ dependencies {
 
     //VIEWMODEL
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+    //RETROFIT
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
 }

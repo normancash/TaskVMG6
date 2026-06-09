@@ -1,6 +1,7 @@
 package com.example.taskvmg6.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -9,7 +10,7 @@ import com.example.taskvmg6.ui.screen.TaskDetailScreen
 import com.example.taskvmg6.ui.screen.TaskListScreen
 
 @Composable
-fun AppNavigation() {
+fun AppNavigation(modifier: Modifier) {
     val navController = rememberNavController()
 
     NavHost(navController = navController

@@ -57,7 +57,7 @@ class TaskViewModel : ViewModel() {
             id = task.id
             title = task.title
             description = task.description
-            isCompleted = task.isCompleted
+            isCompleted = task.completed
         }
     }
 
@@ -67,7 +67,7 @@ class TaskViewModel : ViewModel() {
                 id = id,
                 title = title,
                 description = description,
-                isCompleted = isCompleted
+                completed = isCompleted
             )
         )
         loadTask()
@@ -79,7 +79,7 @@ class TaskViewModel : ViewModel() {
                 id = id,
                 title = title,
                 description = description,
-                isCompleted = isCompleted
+                completed = isCompleted
             )
         )
         loadTask()

@@ -1,9 +1,25 @@
 package com.example.taskvmg6.ui.repository
 
 import com.example.taskvmg6.ui.model.Task
+import com.example.taskvmg6.ui.service.ApiResult
+import com.example.taskvmg6.ui.service.TaskService
 
-class TaskRepository {
+class TaskRepository(private val api: TaskService) {
     private val tasks = mutableListOf<Task>()
+
+    suspend fun findAll(): ApiResult<List<Task>>  {
+        return try {
+            val response = api.getAllTasks()
+            if (response.isSuccessful) {
+                ApiResult.Success(response.body() ?: emptyList())
+            }
+            else {
+                ApiResult.Error("Error HTTP ${response.message()}")
+            }
+          } catch (e: Exception) {
+            ApiResult.Error(e.message ?: "Unknown error")
+          }
+    }
 
     fun addTask(task: Task) = tasks.add(task)
 
