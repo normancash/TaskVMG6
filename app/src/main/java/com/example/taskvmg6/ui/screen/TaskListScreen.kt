@@ -13,18 +13,23 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.taskvmg6.ui.navigation.TaskDetail
+import com.example.taskvmg6.ui.viewmodel.TaskListViewModel
 import com.example.taskvmg6.ui.viewmodel.TaskViewModel
 
 @Composable
 fun TaskListScreen(
     navController: NavController,
-    viewModel: TaskViewModel = viewModel()
+    viewModel: TaskListViewModel = viewModel()
 ) {
+
+    val state by viewModel.state.collectAsState()
 
     Column {
 
