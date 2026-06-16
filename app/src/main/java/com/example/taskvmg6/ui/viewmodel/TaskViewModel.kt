@@ -6,9 +6,10 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.example.taskvmg6.ui.model.Task
 import com.example.taskvmg6.ui.repository.TaskRepository
+import com.example.taskvmg6.ui.repository.TaskRepositoryOld
 
 class TaskViewModel : ViewModel() {
-    private val taskRepository = TaskRepository()
+    private val taskRepository = TaskRepositoryOld()
 
     var tasks by mutableStateOf(
         listOf<Task>()

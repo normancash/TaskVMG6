@@ -7,10 +7,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
-import com.example.taskvmg6.ui.repository.TaskRepository
 import com.example.taskvmg6.ui.screen.TaskDetailScreen
 import com.example.taskvmg6.ui.screen.TaskListScreen
-import com.example.taskvmg6.ui.service.RetrofitClient
+import com.example.taskvmg6.ui.service.ServiceLocator
 import com.example.taskvmg6.ui.viewmodel.TaskListViewModel
 import com.example.taskvmg6.ui.viewmodel.TaskListViewModelFactory
 
@@ -22,12 +21,12 @@ fun AppNavigation(modifier: Modifier) {
         , startDestination = TaskList)
     {
         composable<TaskList> {
-            val viewModel = TaskListViewModel =
+            val viewModel : TaskListViewModel =
                 viewModel(factory = TaskListViewModelFactory(
-                    TaskRepository(RetrofitClient.taskService)
+                        ServiceLocator.taskRepository
                     )
                 )
-            TaskListScreen(navController)
+            TaskListScreen(navController,viewModel)
         }
         composable<TaskDetail> { backStackEntry ->
             val taskId = backStackEntry

@@ -68,4 +68,8 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
+
+
+    //ICONS
+    implementation(libs.androidx.compose.material.icons.extended)
 }
