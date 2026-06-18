@@ -16,7 +16,7 @@ class TaskViewModel : ViewModel() {
     )
         private set
 
-    var id by mutableStateOf(0)
+    var id by mutableStateOf("")
         private set
 
     var title by mutableStateOf("")
@@ -29,7 +29,7 @@ class TaskViewModel : ViewModel() {
         private set
 
     fun onIdChange(newId: String) {
-        id = newId.toIntOrNull() ?: 0
+        id = newId ?: ""
     }
     fun onTitleChange(newTitle: String) {
         title = newTitle
@@ -91,7 +91,7 @@ class TaskViewModel : ViewModel() {
     }
 
     fun clearForm() {
-        id = 0
+        id = ""
         title = ""
         description = ""
         isCompleted = false

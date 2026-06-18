@@ -11,12 +11,12 @@ class TaskRepositoryOld() {
 
     fun getTasks() = tasks
 
-    fun getTask(id: Int) = tasks.find { it.id == id }
+    fun getTask(id: Int) = tasks.find { it.id.equals(id) }
 
     fun updateTask(task: Task) = tasks.replaceAll {
         if (it.id == task.id) task else it }
 
-    fun deleteTask(taskId: Int) = tasks.removeIf { it.id == taskId }
+    fun deleteTask(taskId: Int) = tasks.removeIf { it.id.equals(taskId) }
 
     fun deleteTask(task: Task) = tasks.remove(task)
 }

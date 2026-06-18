@@ -32,7 +32,7 @@ fun TaskDetailScreen(
         modifier = Modifier.padding(16.dp)
     ) {
         OutlinedTextField(
-            value = viewModel.id.toString(),
+            value = viewModel.id,
             onValueChange = {
                 viewModel.onIdChange(it)
             },
