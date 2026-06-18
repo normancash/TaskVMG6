@@ -1,5 +1,6 @@
 package com.example.taskvmg6.ui.screen
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -42,7 +43,7 @@ fun TaskListScreen(
         modifier = Modifier.fillMaxSize()
         ,floatingActionButton = {
             FloatingActionButton(onClick = {
-                navController.navigate(TaskDetail(-1))
+                navController.navigate(TaskDetail(""))
             }) {
                 Icon(
                     imageVector = Icons.Default.Add,
@@ -90,6 +91,11 @@ fun TaskListScreen(
                             Card(
                                 modifier = Modifier.padding(vertical = 8.dp)
                                     .fillMaxWidth()
+                                , onClick = {
+                                    navController.navigate(
+                                        TaskDetail(currentState.tasks[it].id)
+                                    )
+                                }
                             )
                             {
                                 Row(
@@ -97,7 +103,8 @@ fun TaskListScreen(
                                     horizontalArrangement = Arrangement.SpaceBetween
                                     ,verticalAlignment = Alignment.CenterVertically
                                 ) {
-                                    Text(currentState.tasks[it].id.toString())
+                                   // Text(currentState.tasks[it].id.toString())
+                                    Log.i("INFO","Task: ${currentState.tasks[it].id}")
                                     Text(currentState.tasks[it].title)
                                     Checkbox(
                                         checked = currentState.tasks[it].completed,

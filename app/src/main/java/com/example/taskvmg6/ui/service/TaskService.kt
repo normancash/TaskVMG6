@@ -12,8 +12,8 @@ interface TaskService {
     @GET("task/all")
     suspend fun getAllTasks(): Response<List<Task>>
 
-    @GET("task/getId/{id}")
-    suspend fun getTaskById(@Path("id") id: Int):
+    @GET("task/get/{id}")
+    suspend fun getTaskById(@Path("id") id: String):
             Response<Task>
 
     @POST("task/save")

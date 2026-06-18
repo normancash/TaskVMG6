@@ -10,6 +10,8 @@ import androidx.navigation.toRoute
 import com.example.taskvmg6.ui.screen.TaskDetailScreen
 import com.example.taskvmg6.ui.screen.TaskListScreen
 import com.example.taskvmg6.ui.service.ServiceLocator
+import com.example.taskvmg6.ui.viewmodel.TaskDetailViewModel
+import com.example.taskvmg6.ui.viewmodel.TaskDetailViewModelFactory
 import com.example.taskvmg6.ui.viewmodel.TaskListViewModel
 import com.example.taskvmg6.ui.viewmodel.TaskListViewModelFactory
 
@@ -29,9 +31,14 @@ fun AppNavigation(modifier: Modifier) {
             TaskListScreen(navController,viewModel)
         }
         composable<TaskDetail> { backStackEntry ->
+            val viewModel : TaskDetailViewModel =
+                viewModel(factory = TaskDetailViewModelFactory(
+                    ServiceLocator.taskRepository
+                )
+            )
             val taskId = backStackEntry
                 .toRoute<TaskDetail>().taskId
-            TaskDetailScreen(navController, taskId)
+            TaskDetailScreen(navController, taskId,viewModel)
         }
     }
 }

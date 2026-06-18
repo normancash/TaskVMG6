@@ -7,5 +7,5 @@ object TaskList
 
 @Serializable
 data class TaskDetail(
-    val taskId : Int
+    val taskId : String
 )
