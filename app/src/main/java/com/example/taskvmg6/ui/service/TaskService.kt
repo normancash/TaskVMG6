@@ -12,7 +12,7 @@ interface TaskService {
     @GET("task/all")
     suspend fun getAllTasks(): Response<List<Task>>
 
-    @GET("task/get/{id}")
+    @GET("task/getId/{id}")
     suspend fun getTaskById(@Path("id") id: String):
             Response<Task>
 

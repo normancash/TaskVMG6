@@ -1,5 +1,6 @@
 package com.example.taskvmg6.ui.screen
 
+import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -18,6 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,9 +37,11 @@ fun TaskDetailScreen(
     taskId: String,
     viewModel: TaskDetailViewModel
 ) {
-    val state = viewModel.state.collectAsState()
+    val state by viewModel.state.collectAsState()
 
     val snackbarHostState = remember { SnackbarHostState() }
+
+    Log.i("INFO SCREEN","ID: ${taskId}")
 
     Scaffold(
         snackbarHost = { SnackbarHost(snackbarHostState) }
@@ -87,7 +91,7 @@ fun TaskDetailScreen(
                     OutlinedTextField(
                         value = viewModel.id,
                         onValueChange = {
-                            viewModel.onIdChange(currentState.task.id)
+                            viewModel.onIdChange(it)
                         },
                         label = {
                             Text("ID")
@@ -100,7 +104,7 @@ fun TaskDetailScreen(
                         value = viewModel.title,
                         onValueChange = {
 
-                            viewModel.onTitleChange(currentState.task.title)
+                            viewModel.onTitleChange(it)
                         },
                         label = {
                             Text("Título")
@@ -117,7 +121,7 @@ fun TaskDetailScreen(
                             checked = viewModel.completed,
                             onCheckedChange = {
 
-                                viewModel.onIsCompletedChange(currentState.task.completed)
+                                viewModel.onIsCompletedChange(it)
                             }
                         )
 

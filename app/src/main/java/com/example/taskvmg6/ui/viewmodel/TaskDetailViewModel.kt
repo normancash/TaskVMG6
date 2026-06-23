@@ -1,5 +1,6 @@
 package com.example.taskvmg6.ui.viewmodel
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -55,6 +56,7 @@ class TaskDetailViewModel(
     }
 
     fun findById(id: String) {
+      Log.i("INFO VM FBID","ID: ${id}")
       if (id.isEmpty()) {
           clearForm()
           return
@@ -62,6 +64,7 @@ class TaskDetailViewModel(
       viewModelScope.launch {
           when (val result = taskRepository.findById(id)) {
               is ApiResult.Success -> {
+                  Log.i("INFO RESULT","result: ${result.data.id}")
                   loadForm(result.data)
                   _state.value = TaskDetailState.Success(result.data)
               }
@@ -100,6 +103,7 @@ class TaskDetailViewModel(
     }
 
     private fun loadForm(task : Task) {
+        Log.i("INFO RESULT","LOAD FORMAT: ${task.id}")
         id = task.id
         title = task.title
         description = task.description
